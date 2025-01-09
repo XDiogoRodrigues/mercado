@@ -65,7 +65,7 @@ class ShoppingCart:
                     item[chave][1] += 1
                     in_list = True
         if in_list == False:
-            produto: dict = {f'{item_verification.name}': [item_verification.price, 1]}
-            self.items = produto
+            product: dict = {f'{item_verification.name}': [item_verification.price, 1]}
+            self.items = product
                
        
