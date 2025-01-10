@@ -2,3 +2,6 @@ Playstation 5 3800.0 20 True
 Playstation 2 1000.0 20 True
 Fone Red Dragon  299.0 50 True
 Playstation 4 2100.0 20 True
+Dual Shock 5 380.0 10 True
+Dual Shock 4 220.0 20 True
+Smartphone Galaxy S4 Plus 2900.0 20 True

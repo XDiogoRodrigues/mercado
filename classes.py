@@ -1,8 +1,3 @@
-import locale
-
-locale.setlocale(locale.LC_MONETARY, 'pt_BR.UTF-8')
-
-
 class Product:
 
     def __init__(self, name: str, price: float, quantity: int, is_in_stock: bool):
