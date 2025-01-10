@@ -48,7 +48,23 @@ def register_product():
                 print(f'{name.title()} já está cadastrado!')
         except ValueError:
             print('Dado inválido!')
+
      
+def list_products():
+    with open('produtos.txt', encoding='UTF-8', mode='r') as arq:
+        products: list = arq.readlines()
+
+        products = [products[indice].replace('\n', '').split() for indice in range(0, len(products))]
+
+        products = [ ' '.join(products[indice][0:-3])for indice in range(0, len(products))]
+        
+
+    if products:
+        for index in range(0, len(products)):
+            print(f'Nome: {products[index]}')    
+    else:
+        print('Não possui nenhum produto cadastrado!')
+
 
 def function_choice(choice: int):
     match choice:
@@ -57,6 +73,7 @@ def function_choice(choice: int):
             register_product()
         case 2:
             print('--------- Lista Produtos -------------')
+            list_products()
         case 3:
             print('--------- Comprar Produto ------------')
         case 4:

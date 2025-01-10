@@ -1,7 +1,7 @@
 from funcoes import interface, function_choice
 
 
-choice = 4
+choice: int = 4
 
 while choice != 5 and isinstance(choice, int):
     if choice == 0:
