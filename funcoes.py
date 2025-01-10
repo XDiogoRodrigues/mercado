@@ -90,14 +90,14 @@ def buy_product():
                 product = list_products[index][str(index)]
                 print(f'{index + 1}- Nome: {product.name} Preço: {locale.currency(product.price)}')
 
-            product_choice = input('Informe o produto que você gostaria de comprar:\nEscolha: ')
+            product_choice = input('\nInforme o produto que você gostaria de comprar:\nEscolha: ')
             product_choice = str(int(product_choice) - 1)
 
             for index in range(0, len(list_products)):
                 if product_choice in list_products[index]:
                     card_buy.add_item(list_products[index][str(index)])
         
-            choice = int(input('1- Continuar comprando | 2- Sair\nEscolha: '))
+            choice = int(input('\n1- Continuar comprando | 2- Sair\nEscolha: '))
            
 
 def function_choice(choice: int):
@@ -112,7 +112,8 @@ def function_choice(choice: int):
             print('--------- Comprar Produto ------------')
             buy_product()
         case 4:
-            print('-------- Visualizar Carrinho ---------')
+            print('-------- Itens do Carrinho ---------')
+            card_buy.show_card_data()
         case 5:
             print('Saindo.......')
        

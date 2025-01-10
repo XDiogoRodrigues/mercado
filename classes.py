@@ -1,3 +1,8 @@
+import locale
+
+locale.setlocale(locale.LC_MONETARY, 'pt_BR.UTF-8')
+
+
 class Product:
 
     def __init__(self, name: str, price: float, quantity: int, is_in_stock: bool):
@@ -62,5 +67,24 @@ class ShoppingCart:
         if in_list == False:
             product: dict = {f'{item_verification.name}': [item_verification.price, 1]}
             self.items = product
+
+    def show_card_data(self):
+        value_total = 0
+        quantity_products = 0
+        for product in self.items:
+            for chave, valor in product.items():
+                print(f'Nome: {chave}\nPreço: {locale.currency(valor[0])}\nQuantidade: {valor[1]}\n')
+                value_total += valor[0] * valor[1]
+                quantity_products += valor[1]
+        if quantity_products > 1:
+            print(f'{quantity_products} itens no carrinho.')
+        elif quantity_products == 1:
+            print(f'{quantity_products} item no carrinho.')
+        else:
+            print('Não há nenhum item no carrinho.')
+
+        if value_total > 0:
+            print(f'Valor total em carrinho: {locale.currency(value_total)}\n')
+
                
        
