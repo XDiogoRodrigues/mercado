@@ -69,8 +69,8 @@ class ShoppingCart:
             self.items = product
 
     def show_card_data(self):
-        value_total = 0
-        quantity_products = 0
+        value_total: float = 0
+        quantity_products: int = 0
         for product in self.items:
             for chave, valor in product.items():
                 print(f'Nome: {chave}\nPreço: {locale.currency(valor[0])}\nQuantidade: {valor[1]}\n')

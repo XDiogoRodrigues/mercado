@@ -4,11 +4,11 @@ import locale
 
 locale.setlocale(locale.LC_MONETARY, 'pt_BR.UTF-8')
 
-card_buy = ShoppingCart()
+card_buy: ShoppingCart = ShoppingCart()
 
 def interface() -> int:
     try:
-        choice = int(input(f'Informe o que gostaria de fazer:\n1- Cadastrar Produto\n2- Listar Produtos\n3- Comprar Produto\n4- Visualizar Carrinho\n5- Sair\nEscolha: '))
+        choice: int = int(input(f'Informe o que gostaria de fazer:\n1- Cadastrar Produto\n2- Listar Produtos\n3- Comprar Produto\n4- Visualizar Carrinho\n5- Sair\nEscolha: '))
         if choice == 1:
             return 1
         elif choice == 2:
@@ -27,7 +27,7 @@ def interface() -> int:
 
 
 def register_product():
-    choice = '1'
+    choice: str = '1'
     while choice != '0':
         try:
             name: str = input('Informe o nome do produto:\nNome: ')
@@ -59,9 +59,9 @@ def list_products():
     with open('produtos.txt', encoding='UTF-8', mode='r') as arq:
         products: list = arq.readlines()
 
-        products = [products[index].replace('\n', '').split() for index in range(0, len(products))]
+        products: list = [products[index].replace('\n', '').split() for index in range(0, len(products))]
 
-        products = [ ' '.join(products[index][0:-3])for index in range(0, len(products))]
+        products: list = [ ' '.join(products[index][0:-3])for index in range(0, len(products))]
         
 
     if products:
@@ -73,25 +73,25 @@ def list_products():
 
 def buy_product():
     with open('produtos.txt') as arq:
-        products = arq.readlines()
-        prices_products = [products[index].replace('\n', '').split()[-3] for index in range(0, len(products))]
-        quantity_products = [ products[index].replace('\n', '').split()[-2] for index in range(0, len(products))]
-        name_products = [ ' '.join(products[index].replace('\n', '').split()[0:-3]) for index in range(0, len(products))]
+        products: list = arq.readlines()
+        prices_products:list = [products[index].replace('\n', '').split()[-3] for index in range(0, len(products))]
+        quantity_products: list = [ products[index].replace('\n', '').split()[-2] for index in range(0, len(products))]
+        name_products: list = [ ' '.join(products[index].replace('\n', '').split()[0:-3]) for index in range(0, len(products))]
 
         list_products: list = []
         for index in range(0, len(products)):
             product: Product = Product(name_products[index], prices_products[index], quantity_products[index], is_in_stock=True )
-            dict_product = {str(index): product}
+            dict_product: dict = {str(index): product}
             list_products.append(dict_product)
         
-        choice = 1
+        choice: int = 1
         while choice != 2:
             for index in range(0, len(list_products)):
-                product = list_products[index][str(index)]
+                product: dict = list_products[index][str(index)]
                 print(f'{index + 1}- Nome: {product.name} Preço: {locale.currency(product.price)}')
 
-            product_choice = input('\nInforme o produto que você gostaria de comprar:\nEscolha: ')
-            product_choice = str(int(product_choice) - 1)
+            product_choice: str = input('\nInforme o produto que você gostaria de comprar:\nEscolha: ')
+            product_choice: str = str(int(product_choice) - 1)
 
             for index in range(0, len(list_products)):
                 if product_choice in list_products[index]:
